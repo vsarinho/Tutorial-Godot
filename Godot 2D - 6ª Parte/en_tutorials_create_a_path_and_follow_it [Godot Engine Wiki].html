@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<!-- saved from url=(0066)http://www.godotengine.de/en/tutorials/create_a_path_and_follow_it -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr" class="js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>en:tutorials:create_a_path_and_follow_it [Godot Engine Wiki]</title>
+  <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="shortcut icon" href="http://www.godotengine.de/lib/tpl/bootstrap3/images/favicon.ico">
+<link rel="apple-touch-icon" href="http://www.godotengine.de/lib/tpl/bootstrap3/images/apple-touch-icon.png">
+      <link type="text/css" rel="stylesheet" href="./en_tutorials_create_a_path_and_follow_it [Godot Engine Wiki]_files/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="./en_tutorials_create_a_path_and_follow_it [Godot Engine Wiki]_files/font-awesome.min.css">
+  <script type="text/javascript">/*<![CDATA[*/
+    var TPL_CONFIG = {"tableFullWidth":1};
+  /*!]]>*/</script>
+  <meta name="generator" content="DokuWiki">
+<meta name="robots" content="index,follow">
+<meta name="keywords" content="en,tutorials,create_a_path_and_follow_it">
+<link rel="search" type="application/opensearchdescription+xml" href="http://www.godotengine.de/lib/exe/opensearch.php" title="Godot Engine Wiki">
+<link rel="start" href="http://www.godotengine.de/">
+<link rel="contents" href="http://www.godotengine.de/en/tutorials/create_a_path_and_follow_it?do=index" title="Sitemap">
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="http://www.godotengine.de/feed.php">
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="http://www.godotengine.de/feed.php?mode=list&amp;ns=en:tutorials">
+<link rel="alternate" type="text/html" title="Plain HTML" href="http://www.godotengine.de/_export/xhtml/en/tutorials/create_a_path_and_follow_it">
+<link rel="alternate" type="text/plain" title="Wiki Markup" href="http://www.godotengine.de/_export/raw/en/tutorials/create_a_path_and_follow_it">
+<link rel="canonical" href="http://www.godotengine.de/en/tutorials/create_a_path_and_follow_it">
+<link rel="stylesheet" type="text/css" href="./en_tutorials_create_a_path_and_follow_it [Godot Engine Wiki]_files/css.php">
+<script type="text/javascript">/*<![CDATA[*/var NS='en:tutorials';var JSINFO = {"id":"en:tutorials:create_a_path_and_follow_it","namespace":"en:tutorials","isadmin":0,"isauth":0,"move_renameokay":false};
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="./en_tutorials_create_a_path_and_follow_it [Godot Engine Wiki]_files/js.php"></script><style id="iris-css">.iris-picker{display:block;position:relative}.iris-picker,.iris-picker *{-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input+.iris-picker{margin-top:4px}.iris-error{background-color:#ffafaf}.iris-border{border-radius:3px;border:1px solid #aaa;width:200px;background-color:#fff}.iris-picker-inner{position:absolute;top:0;right:0;left:0;bottom:0}.iris-border .iris-picker-inner{top:10px;right:10px;left:10px;bottom:10px}.iris-picker .iris-square-inner{position:absolute;left:0;right:0;top:0;bottom:0}.iris-picker .iris-square,.iris-picker .iris-slider,.iris-picker .iris-square-inner,.iris-picker .iris-palette{border-radius:3px;box-shadow:inset 0 0 5px rgba(0,0,0,.4);height:100%;width:12.5%;float:left;margin-right:5%}.iris-picker .iris-square{width:76%;margin-right:10%;position:relative}.iris-picker .iris-square-inner{width:auto;margin:0}.iris-ie-9 .iris-square,.iris-ie-9 .iris-slider,.iris-ie-9 .iris-square-inner,.iris-ie-9 .iris-palette{box-shadow:none;border-radius:0}.iris-ie-9 .iris-square,.iris-ie-9 .iris-slider,.iris-ie-9 .iris-palette{outline:1px solid rgba(0,0,0,.1)}.iris-ie-lt9 .iris-square,.iris-ie-lt9 .iris-slider,.iris-ie-lt9 .iris-square-inner,.iris-ie-lt9 .iris-palette{outline:1px solid #aaa}.iris-ie-lt9 .iris-square .ui-slider-handle{outline:1px solid #aaa;background-color:#fff;-ms-filter:"alpha(Opacity=30)"}.iris-ie-lt9 .iris-square .iris-square-handle{background:0;border:3px solid #fff;-ms-filter:"alpha(Opacity=50)"}.iris-picker .iris-strip{margin-right:0;position:relative}.iris-picker .iris-strip .ui-slider-handle{position:absolute;background:0;margin:0;right:-3px;left:-3px;border:4px solid #aaa;border-width:4px 3px;width:auto;height:6px;border-radius:4px;box-shadow:0 1px 2px rgba(0,0,0,.2);opacity:.9;z-index:5;cursor:ns-resize}.iris-strip .ui-slider-handle:before{content:" ";position:absolute;left:-2px;right:-2px;top:-3px;bottom:-3px;border:2px solid #fff;border-radius:3px}.iris-picker .iris-slider-offset{position:absolute;top:11px;left:0;right:0;bottom:-3px;width:auto;height:auto;background:transparent;border:0;border-radius:0}.iris-picker .iris-square-handle{background:transparent;border:5px solid #aaa;border-radius:50%;border-color:rgba(128,128,128,.5);box-shadow:none;width:12px;height:12px;position:absolute;left:-10px;top:-10px;cursor:move;opacity:1;z-index:10}.iris-picker .ui-state-focus .iris-square-handle{opacity:.8}.iris-picker .iris-square-handle:hover{border-color:#999}.iris-picker .iris-square-value:focus .iris-square-handle{box-shadow:0 0 2px rgba(0,0,0,.75);opacity:.8}.iris-picker .iris-square-handle:hover::after{border-color:#fff}.iris-picker .iris-square-handle::after{position:absolute;bottom:-4px;right:-4px;left:-4px;top:-4px;border:3px solid #f9f9f9;border-color:rgba(255,255,255,.8);border-radius:50%;content:" "}.iris-picker .iris-square-value{width:8px;height:8px;position:absolute}.iris-ie-lt9 .iris-square-value,.iris-mozilla .iris-square-value{width:1px;height:1px}.iris-palette-container{position:absolute;bottom:0;left:0;margin:0;padding:0}.iris-border .iris-palette-container{left:10px;bottom:10px}.iris-picker .iris-palette{margin:0;cursor:pointer}.iris-square-handle,.ui-slider-handle{border:0;outline:0}</style>
+  <script type="text/javascript" src="./en_tutorials_create_a_path_and_follow_it [Godot Engine Wiki]_files/bootstrap.min.js.download"></script>
+  <style type="text/css">
+    body { padding-top: 70px; }
+    .toc-affix { z-index:9999; top:60px; right:10px; }
+  </style>
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script type="text/javascript" src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body class="default page-on-panel">
+  <!--[if IE 8 ]><div id="IE8"><![endif]-->
+  <div id="dokuwiki__site" class="container-fluid">
+    <div id="dokuwiki__top" class="site dokuwiki mode_show tpl_bootstrap3    ">
+
+      
+      <!-- header -->
+      <div id="dokuwiki__header">
+        <nav class="navbar navbar-fixed-top navbar-default" role="navigation">
+
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+
+      <button class="navbar-toggle btn btn-default" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <a href="http://www.godotengine.de/start" accesskey="h" title="[H]" class="navbar-brand"><img src="./en_tutorials_create_a_path_and_follow_it [Godot Engine Wiki]_files/logo.png" alt="Godot Engine Wiki" class="pull-left" id="dw__logo" width="20" height="20"> <span id="dw__title">Godot Engine Wiki</span></a>
+    </div>
+
+    <div class="collapse navbar-collapse">
+
+      <ul class="nav navbar-nav" id="dw__navbar">
+        <li>
+  <a href="http://www.godotengine.de/start"><i class="fa fa-fw fa-home"></i> Home</a></li>
+      </ul>
+
+      <div class="navbar-right">
+
+                  <form action="http://www.godotengine.de/start" accept-charset="utf-8" class="navbar-form navbar-left search" id="dw__search" method="get" role="search"><div class="no"><div class="form-group"><input type="hidden" name="do" value="search"><input id="qsearch__in" type="search" placeholder="Search" accesskey="f" name="id" class="edit form-control" title="[F]"></div> <button type="submit" class="btn btn-default" title="Search"><i class="fa fa-fw fa-search"></i><span class="hidden-lg hidden-md hidden-sm"> Search</span></button><div id="qsearch__out" class="panel panel-default ajax_qsearch JSpopup" style="display: none;"></div></div></form>        
+        
+<ul class="nav navbar-nav" id="dw__tools">
+
+
+  <li class="dropdown">
+
+    <a href="http://www.godotengine.de/en/tutorials/create_a_path_and_follow_it#" class="dropdown-toggle" data-toggle="dropdown" title="">
+      <i class="fa fa-fw fa-wrench"></i> <span class="hidden-lg hidden-md hidden-sm">Tools</span> <span class="caret"></span>
+    </a>
+
+    <ul class="dropdown-menu tools" role="menu">
+    
+      <li class="dropdown-header">
+        <i class="fa fa-fw fa-user"></i> User Tools      </li>
+      
+            <li class="divider" role="separator"></li>
+      
+    
+      <li class="dropdown-header">
+        <i class="fa fa-fw fa-wrench"></i> Site Tools      </li>
+      <li><a href="http://www.godotengine.de/en/tutorials/create_a_path_and_follow_it?do=recent" class="action recent" accesskey="r" rel="nofollow" title="Recent Changes [R]"><i class="fa fa-fw fa-list-alt"></i> Recent Changes</a></li><li><a href="http://www.godotengine.de/en/tutorials/create_a_path_and_follow_it?do=media&amp;ns=en%3Atutorials" class="action media" rel="nofollow" title="Media Manager"><i class="fa fa-fw fa-picture-o"></i> Media Manager</a></li><li><a href="http://www.godotengine.de/en/tutorials/create_a_path_and_follow_it?do=index" class="action index" accesskey="x" rel="nofollow" title="Sitemap [X]"><i class="fa fa-fw fa-sitemap"></i> Sitemap</a></li>
+            <li class="divider" role="separator"></li>
+      
+    
+      <li class="dropdown-header">
+        <i class="fa fa-fw fa-file"></i> Page Tools      </li>
+      <li><a href="http://www.godotengine.de/en/tutorials/create_a_path_and_follow_it?do=edit" class="action source" accesskey="v" rel="nofollow" title="Show pagesource [V]"><i class="fa fa-fw fa-pencil-square-o"></i> Show pagesource</a></li><li><a href="http://www.godotengine.de/en/tutorials/create_a_path_and_follow_it?do=revisions" class="action revs" accesskey="o" rel="nofollow" title="Old revisions [O]"><i class="fa fa-fw fa-clock-o"></i> Old revisions</a></li><li><a href="http://www.godotengine.de/en/tutorials/create_a_path_and_follow_it?do=backlink" class="action backlink" rel="nofollow" title="Backlinks"><i class="fa fa-fw fa-link"></i> Backlinks</a></li><li><a href="http://www.godotengine.de/en/tutorials/create_a_path_and_follow_it#dokuwiki__top" class="action top" accesskey="t" rel="nofollow" title="Back to top [T]"><i class="fa fa-fw fa-chevron-up"></i> Back to top</a></li>
+      
+        </ul>
+  </li>
+
+
+</ul>
+
+<ul class="nav navbar-nav" id="dw__translation">
+  <li class="dropdown">
+    <a href="http://www.godotengine.de/en/tutorials/create_a_path_and_follow_it#" class="dropdown-toggle" data-toggle="dropdown" title="Translations of this page"><img src="./en_tutorials_create_a_path_and_follow_it [Godot Engine Wiki]_files/en.gif">
+      <i class="fa fa-fw fa-flag" style="display: none;"></i> <span class="hidden-lg hidden-md hidden-sm">Translations of this page</span><span class="caret"></span>
+    </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header hidden-xs hidden-sm"><i class="fa fa-fw fa-flag"></i> Translations of this page</li>
+    <li><a href="http://www.godotengine.de/de/tutorials/create_a_path_and_follow_it" class="wikilink1 flag" title="Deutsch"><img src="./en_tutorials_create_a_path_and_follow_it [Godot Engine Wiki]_files/de.gif" alt="de" height="11">Deutsch (de)</a></li><li class="active"><a href="http://www.godotengine.de/en/tutorials/create_a_path_and_follow_it" class="wikilink1 cur flag" title="English"><img src="./en_tutorials_create_a_path_and_follow_it [Godot Engine Wiki]_files/en.gif" alt="en" height="11">English (en)</a></li>  </ul>
+</li></ul>
+
+        <ul class="nav navbar-nav">
+
+          
+                    <li>
+            <span class="dw__actions">
+              <a href="http://www.godotengine.de/en/tutorials/create_a_path_and_follow_it?do=register" class="action register btn btn-success navbar-btn" rel="nofollow" title="Register"><i class="fa fa-fw fa-user-plus"></i> Register</a><a href="http://www.godotengine.de/en/tutorials/create_a_path_and_follow_it?do=login&amp;sectok=5b64a0a02b0bbc4361487a3ee61c7650" class="action login btn btn-default navbar-btn" rel="nofollow" title="Log In"><i class="fa fa-fw fa-sign-in"></i> Log In</a>            </span>
+          </li>
+          
+        </ul>
+
+        
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+      </div>
+      <!-- /header -->
+
+            
+            <div id="dw__breadcrumbs">
+        <hr>
+                <div class="dw__youarehere">
+          <span class="bchead pull-left">You are here: </span><ul class="breadcrumb"><li><a href="http://www.godotengine.de/start" class="wikilink2 home" title="start" rel="nofollow"><i class="fa fa-fw fa-home"></i></a></li><li><a href="http://www.godotengine.de/en/start" class="wikilink1" title="en:start">en</a></li><li><a href="http://www.godotengine.de/en/tutorials" class="wikilink1" title="en:tutorials">tutorials</a></li><li class="active"><a href="http://www.godotengine.de/en/tutorials/create_a_path_and_follow_it" class="wikilink1 curid" title="en:tutorials:create_a_path_and_follow_it">create_a_path_and_follow_it</a></li></ul>           </div>
+                        <div class="dw__breadcrumbs hidden-print">
+          <span class="bchead pull-left">Trace:</span>   <ul class="breadcrumb"><li class="active"><a href="http://www.godotengine.de/en/tutorials/create_a_path_and_follow_it" class="breadcrumbs curid" title="en:tutorials:create_a_path_and_follow_it">create_a_path_and_follow_it</a></li></ul>        </div>
+                <hr>
+      </div>
+      
+      <p class="pageId text-right">
+        <span class="label label-primary">en:tutorials:create_a_path_and_follow_it</span>
+      </p>
+
+      <div id="dw__msgarea">
+              </div>
+
+      <main class="main row" role="main">
+
+        
+        <!-- ********** CONTENT ********** -->
+        <article id="dokuwiki__content" class="container-fluid">
+
+          <div class="panel panel-default"> 
+            <div class="page group panel-body">
+
+                                          
+              <div class="toc-affix pull-right hidden-print affix" data-spy="affix" data-offset-top="150">
+                <!-- TOC START -->
+<div class="panel panel-default" id="dw__toc" style="background-color: rgb(255, 255, 255);">
+<h3 class="panel-heading toggle closed" style="cursor: pointer;"><i class="fa fa-fw fa-list" style="padding-right: 5px"></i> <strong class="fa fa-fw fa-chevron-down"><span>+</span></strong><span class="label hide">Table of Contents</span></h3>
+<div class="panel-body" aria-expanded="false" style="display: none;">
+
+<ul class="toc nav nav-pills nav-stacked" style="display: none;">
+<li class="level1 active"><a href="http://www.godotengine.de/en/tutorials/create_a_path_and_follow_it#create_a_path_and_follow_it">Create a path and follow it</a>
+<ul class="toc nav nav-pills nav-stacked">
+<li class="level2 active"><a href="http://www.godotengine.de/en/tutorials/create_a_path_and_follow_it#part_1_sprite_follows_path">Part 1 Sprite follows path</a></li>
+<li class="level2"><a href="http://www.godotengine.de/en/tutorials/create_a_path_and_follow_it#part_2_sprite_follows_code_path">Part 2 Sprite follows code path</a></li>
+<li class="level2"><a href="http://www.godotengine.de/en/tutorials/create_a_path_and_follow_it#part_3_draw_coded_path">Part 3 Draw coded path</a></li>
+<li class="level2"><a href="http://www.godotengine.de/en/tutorials/create_a_path_and_follow_it#sprite_rotation">Sprite rotation</a>
+<ul class="toc nav nav-pills nav-stacked">
+<li class="level3"><a href="http://www.godotengine.de/en/tutorials/create_a_path_and_follow_it#rotation_speed">Rotation speed</a></li>
+<li class="level3"><a href="http://www.godotengine.de/en/tutorials/create_a_path_and_follow_it#rotation_code">Rotation code</a></li>
+</ul>
+</li>
+<li class="level2"><a href="http://www.godotengine.de/en/tutorials/create_a_path_and_follow_it#finished_code">Finished code</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+              </div>
+
+              <!-- wikipage start -->
+              
+<h1 class="sectionedit1 page-header" id="create_a_path_and_follow_it">Create a path and follow it</h1>
+<div class="level1">
+
+</div>
+
+<h2 class="sectionedit2" id="part_1_sprite_follows_path">Part 1 Sprite follows path</h2>
+<div class="level2">
+
+<p>
+Perhaps the simplest way to do this is to create three nested nodes: a Path2D containing a PathFollow2D containing a Sprite (or whatever you want to draw). Nesting the Sprite will cause it to automatically move to the current position of the follower.  Then all you need to do is to add this script to the PathFollow2D node:
+</p>
+<pre class="code gdscript">extends PathFollow2D
+&nbsp;
+var speed = 100
+&nbsp;
+func _ready():
+	# assumes that our parent is a Path2D node.
+	if get_parent().get_curve().get_point_count() &gt; 1:
+		set_fixed_process(true)
+&nbsp;
+func _fixed_process(delta):
+	set_offset(get_offset() + delta * speed)</pre>
+
+<p>
+If your path doesn't loop and you want to stop processing when you hit the end, add this to the end of the <code>_fixed_process</code> function:
+</p>
+<pre class="code gdscript">if get_unit_offset() &gt;= 1:
+	set_fixed_process(false)</pre>
+
+<p>
+I don't <em>think</em> that the original more complicated method has any advantages, but I'm leaving it below in case it does…
+</p>
+<hr>
+
+<p>
+<a href="https://youtu.be/vtPvGhb9qTE" class="urlextern" title="https://youtu.be/vtPvGhb9qTE" rel="nofollow">https://youtu.be/vtPvGhb9qTE</a>
+</p>
+
+<p>
+<img src="./en_tutorials_create_a_path_and_follow_it [Godot Engine Wiki]_files/path1.gif" class="media img-responsive" alt="">
+</p>
+
+<p>
+1. We create a Node2D and add a Path2D as children. This will be our container for the path(s). We append to this Path2D a PathFollow2D. This is the actual path. A none visible point follows this path. This point we will move later with:
+</p>
+<pre class="code gdscript">get_node("Path2D/PathFollow2D").set_offset( n_offset )</pre>
+
+<p>
+2. Now we add a script to the Node2D which handles the movement. Add the standard (ready, set_fixed_process). Save the script and add this scene as starting scene to the config.
+</p>
+
+<p>
+3. To check, if the path is a path and not a single point, we count these points and print it to the debug console:
+</p>
+<pre class="code gdscript">print( get_node("Path2D").get_curve().get_point_count() )</pre>
+
+<p>
+At this point it prints 0
+</p>
+
+<p>
+4. Switch to the graphical editor and click on Path2D. Add some points with the point-tool to create a path.
+</p>
+
+<p>
+5. Add a Sprite to the Node2D (or something else you want to move along the path)
+</p>
+
+<p>
+6. Back to the code editor we add some code to the fixed_process function and add a variable (speed):
+</p>
+<pre class="code gdscript">var speed = 100 # speed of the moving sprite
+&nbsp;
+func _fixed_process(delta):
+&nbsp;
+	# Only 1 point... no movement required
+	if get_node("Path2D").get_curve().get_point_count() &lt; 2:
+		set_fixed_process(false)
+		return
+&nbsp;
+	var n_offset = get_node("Path2D/PathFollow2D").get_offset() + delta * speed
+&nbsp;
+	# move the point on the path
+	get_node("Path2D/PathFollow2D").set_offset( n_offset )
+&nbsp;
+	# set the sprite pos to the point pos
+	get_node("Sprite").set_pos( get_node("Path2D/PathFollow2D").get_pos() )
+&nbsp;
+	# goal reached
+	if get_node("Path2D/PathFollow2D").get_unit_offset() &gt;= 1:
+		set_fixed_process(false)</pre>
+
+<p>
+6.1 the 1. part checks, if the path has less than 2 points and cancels the process if so.
+</p>
+
+<p>
+6.2 the 2. part moves the invisible point on the path
+</p>
+
+<p>
+6.3 the 3. part set the position of the Sprite to the position of the invisible point
+</p>
+
+<p>
+6.4 the last part checks, if the target is reached and cancels the process if so.
+</p>
+
+<p>
+If you start the script now, the Sprite follows the path.
+</p>
+
+</div>
+
+<h2 class="sectionedit3" id="part_2_sprite_follows_code_path">Part 2 Sprite follows code path</h2>
+<div class="level2">
+
+<p>
+<a href="https://youtu.be/HKmVJTiXs9A" class="urlextern" title="https://youtu.be/HKmVJTiXs9A" rel="nofollow">https://youtu.be/HKmVJTiXs9A</a>
+</p>
+
+<p>
+<img src="./en_tutorials_create_a_path_and_follow_it [Godot Engine Wiki]_files/path2.gif" class="media img-responsive" alt="">
+</p>
+
+<p>
+Now we add some code to generate a path. 
+</p>
+
+<p>
+First we need a Curve2D, which handles our points. 
+</p>
+<pre class="code gdscript">var curve = Curve2D.new()</pre>
+
+<p>
+Also we need an array for all our points (path).  
+</p>
+<pre class="code gdscript">var path = []</pre>
+
+<p>
+Then we add some points to the path array and convert them later to the curve (for point in path) 
+</p>
+<pre class="code gdscript">	path.append( Vector2(200,200) )
+	path.append( Vector2(0,200) )
+	path.append( Vector2(200,0) )
+	path.append( Vector2(400,400) )
+	path.append( Vector2(0,0) )</pre>
+
+<p>
+Now we convert every point from the path array to a point at the Curve2D
+</p>
+<pre class="code gdscript">	if path.size() &gt; 0:
+		for point in path:
+			curve.add_point( point )</pre>
+
+<p>
+Last we set your curve as path at path2d. This is it. 
+</p>
+<pre class="code gdscript">get_node("Path2D").set_curve(curve)</pre>
+
+</div>
+
+<h2 class="sectionedit4" id="part_3_draw_coded_path">Part 3 Draw coded path</h2>
+<div class="level2">
+
+<p>
+<a href="https://youtu.be/D0MA3-fOtrM" class="urlextern" title="https://youtu.be/D0MA3-fOtrM" rel="nofollow">https://youtu.be/D0MA3-fOtrM</a>
+</p>
+
+<p>
+<img src="./en_tutorials_create_a_path_and_follow_it [Godot Engine Wiki]_files/path3.gif" class="media img-responsive" alt="">
+</p>
+
+<p>
+Lastly we want to show /draw the path, so you can see where the road goes.
+</p>
+
+<p>
+So we add another Node2D as container. It also gets its own script.
+</p>
+
+<p>
+This script simply draws the passed path. No more and no less.
+</p>
+<pre class="code gdscript">extends Node2D
+&nbsp;
+var path = [] # path from the main script
+&nbsp;
+func _draw():
+	var col = Color(255,0,0,1)
+&nbsp;
+	# for each path point
+	for i in range( path.size() ):
+		if i &gt; 0:
+			draw_line( path[i-1], path[i], col )</pre>
+
+<p>
+The main script passes the path and triggers the redraw.
+</p>
+<pre class="code gdscript">	get_node("PathDraw").path = path
+	get_node("PathDraw").update()</pre>
+
+</div>
+
+<h2 class="sectionedit5" id="sprite_rotation">Sprite rotation</h2>
+<div class="level2">
+
+<p>
+<a href="https://youtu.be/XD-Qp0Sjb1Y" class="urlextern" title="https://youtu.be/XD-Qp0Sjb1Y" rel="nofollow">https://youtu.be/XD-Qp0Sjb1Y</a>
+</p>
+
+<p>
+<img src="./en_tutorials_create_a_path_and_follow_it [Godot Engine Wiki]_files/path5.gif" class="media img-responsive" alt="">
+</p>
+
+<p>
+Now we want to rotate the sprite to the direction it moves.
+</p>
+
+<p>
+Indeed the invisible point on the pathfollow2D already rotates to the moving direction.
+</p>
+
+<p>
+So the most simple way would be to add this line:
+</p>
+<pre class="code gdscript">get_node("Sprite").set_rot( get_node("Path2D/PathFollow2D").get_rot() )</pre>
+
+<p>
+after:
+</p>
+<pre class="code gdscript"># set the sprite pos to the point pos
+get_node("Sprite").set_pos( get_node("Path2D/PathFollow2D").get_pos() )</pre>
+
+<p>
+It sets the rotation of the sprite to the rotation of the invisible point.
+</p>
+
+</div>
+
+<h3 class="sectionedit6" id="rotation_speed">Rotation speed</h3>
+<div class="level3">
+
+<p>
+You can also set the rotation speed with the variable <strong>lookahead</strong>. This starts the turning before a point is reached, so it looks a bit more smooth.
+</p>
+
+<p>
+<img src="./en_tutorials_create_a_path_and_follow_it [Godot Engine Wiki]_files/path4.png" class="media img-responsive" alt="">
+</p>
+
+</div>
+
+<h3 class="sectionedit7" id="rotation_code">Rotation code</h3>
+<div class="level3">
+
+<p>
+A very nice way to rotate your sprite is the following code block. It enables you to set a rotation speed, so you have much more control of the movement.
+</p>
+<pre class="code gdscript">	# Get the rotation of the invisible point - rad2deg converts from Radians to Degrees
+	var rot_point = round( rad2deg( get_node("Path2D/PathFollow2D").get_rot() ) )
+&nbsp;
+	# Get the current rotation of the sprite
+	var rot_sprite =round( rad2deg( get_node("Sprite").get_rot() ) )
+&nbsp;
+	# Prevent flickering between -180 and 180
+	if rot_point == -180:
+		rot_point = 180
+&nbsp;
+	# Get the shortest rotation direction (clockwise or counterclockwise)
+	var a =  abs(rot_sprite - rot_point)
+	var b = 360 - abs(rot_sprite - rot_point)
+&nbsp;
+	# Prevent b from falling back below zero
+	if b &lt; 0:
+		b += 360
+		a -= 360
+&nbsp;
+	# Speed you want to rotate the sprite - you should move this to your var block at the top
+	var rot_speed = 8
+&nbsp;
+	# Only rotate, if a difference is given
+	if a &gt; 1:
+		if a &gt; b + rot_speed:
+			get_node("Sprite").set_rot( deg2rad( rad2deg( get_node("Sprite").get_rot() ) + rot_speed ) )
+		if a &lt; b - rot_speed:
+			get_node("Sprite").set_rot( deg2rad( rad2deg( get_node("Sprite").get_rot() ) - rot_speed ) )</pre>
+
+</div>
+
+<h2 class="sectionedit8" id="finished_code">Finished code</h2>
+<div class="level2">
+<pre class="code gdscript">extends Node2D
+&nbsp;
+var speed = 100 # speed of the moving sprite
+var rot_speed = 8 # Speed you want to rotate the sprite
+var path = [] # array for all the points
+&nbsp;
+func _ready():
+&nbsp;
+	# create a curve
+	var curve = Curve2D.new()
+&nbsp;
+	# now add your points - 1 point isn't enough...
+	path.append( Vector2(200,200) )
+	path.append( Vector2(0,200) )
+	path.append( Vector2(200,0) )
+	path.append( Vector2(400,400) )
+	path.append( Vector2(0,0) )
+&nbsp;
+	if path.size() &gt; 0:
+		for point in path:
+			curve.add_point( point )
+&nbsp;
+		get_node("Path2D").set_curve(curve)
+&nbsp;
+	# Draw the path
+	get_node("PathDraw").path = path
+	get_node("PathDraw").update()
+&nbsp;
+	# Initialization here
+	set_fixed_process(true)
+	pass
+&nbsp;
+func _fixed_process(delta):
+	#print( get_node("Path2D").get_curve().get_point_count() )
+&nbsp;
+	# Only 1 point... no movement required
+	if get_node("Path2D").get_curve().get_point_count() &lt; 2:
+		set_fixed_process(false)
+		return
+&nbsp;
+	var n_offset = get_node("Path2D/PathFollow2D").get_offset() + delta * speed
+&nbsp;
+	# move the point on the path
+	get_node("Path2D/PathFollow2D").set_offset( n_offset )
+&nbsp;
+	# set the sprite pos to the point pos
+	get_node("Sprite").set_pos( get_node("Path2D/PathFollow2D").get_pos() )
+&nbsp;
+	# Rotation:
+&nbsp;
+	# Get the rotation of the invisible point - rad2deg converts from Radians to Degrees
+	var rot_point = round( rad2deg( get_node("Path2D/PathFollow2D").get_rot() ) )
+&nbsp;
+	# Get the current rotation of the sprite
+	var rot_sprite =round( rad2deg( get_node("Sprite").get_rot() ) )
+&nbsp;
+	# Prevent flickering between -180 and 180
+	if rot_point == -180:
+		rot_point = 180
+&nbsp;
+	# Get the shortest rotation direction (clockwise or counterclockwise)
+	var a =  abs(rot_sprite - rot_point)
+	var b = 360 - abs(rot_sprite - rot_point)
+&nbsp;
+	# Prevent b from falling back below zero
+	if b &lt; 0:
+		b += 360
+		a -= 360
+&nbsp;
+	# Only rotate, if a difference is given
+	if a &gt; 1:
+		if a &gt; b + rot_speed:
+			get_node("Sprite").set_rot( deg2rad( rad2deg( get_node("Sprite").get_rot() ) + rot_speed ) )
+		if a &lt; b - rot_speed:
+			get_node("Sprite").set_rot( deg2rad( rad2deg( get_node("Sprite").get_rot() ) - rot_speed ) )
+&nbsp;
+	# alternative: set the sprite rotation to the point rotation
+	# get_node("Sprite").set_rot( get_node("Path2D/PathFollow2D").get_rot() )
+&nbsp;
+	# goal reached
+	if get_node("Path2D/PathFollow2D").get_unit_offset() &gt;= 1:
+		set_fixed_process(false)</pre>
+<pre class="code gdscript">extends Node2D
+&nbsp;
+var path = [] # path from the main script
+&nbsp;
+func _draw():
+	var col = Color(255,0,0,1)
+&nbsp;
+	# for each path point
+	for i in range( path.size() ):
+		if i &gt; 0:
+			draw_line( path[i-1], path[i], col )</pre>
+
+</div>
+
+              <!-- wikipage stop -->
+
+                            
+            </div>
+          </div>
+
+        </article>
+
+        
+      </main>
+
+      <footer id="dokuwiki__footer" class="small">
+
+        <a href="javascript:void(0)" class="back-to-top hidden-print btn btn-default btn-sm" title="skip to content" id="back-to-top" style="display: inline;"><i class="fa fa-chevron-up"></i></a>
+
+        <div class="text-right">
+
+                    <span class="docInfo">
+            en/tutorials/create_a_path_and_follow_it.txt · Last modified: 2016/02/07 02:18 by joshgrams          </span>
+          
+          
+        </div>
+
+                <div class="text-center hidden-print">
+          <p id="dw__license">
+            </p><div class="license">Except where otherwise noted, content on this wiki is licensed under the following license: <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license" class="urlextern">CC Attribution-Share Alike 3.0 Unported</a></div>          <p></p>
+          <p id="dw__badges">
+  <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license"><img src="./en_tutorials_create_a_path_and_follow_it [Godot Engine Wiki]_files/cc-by-sa.png" alt="CC Attribution-Share Alike 3.0 Unported"></a>  <a href="http://getbootstrap.com/" title="Built with Bootstrap 3">
+    <img src="./en_tutorials_create_a_path_and_follow_it [Godot Engine Wiki]_files/button-bootstrap3.png" width="80" height="15" alt="Built with Bootstrap 3">
+  </a>
+  <a href="http://www.php.net/" title="Powered by PHP">
+    <img src="./en_tutorials_create_a_path_and_follow_it [Godot Engine Wiki]_files/button-php.gif" width="80" height="15" alt="Powered by PHP">
+  </a>
+  <a href="http://validator.w3.org/check/referer" title="Valid HTML5">
+    <img src="./en_tutorials_create_a_path_and_follow_it [Godot Engine Wiki]_files/button-html5.png" width="80" height="15" alt="Valid HTML5">
+  </a>
+  <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Valid CSS">
+    <img src="./en_tutorials_create_a_path_and_follow_it [Godot Engine Wiki]_files/button-css.png" width="80" height="15" alt="Valid CSS">
+  </a>
+  <a href="http://dokuwiki.org/" title="Driven by DokuWiki">
+    <img src="./en_tutorials_create_a_path_and_follow_it [Godot Engine Wiki]_files/button-dw.png" width="80" height="15" alt="Driven by DokuWiki">
+  </a>
+</p>
+        </div>
+        
+      </footer>
+
+      
+    </div><!-- /site -->
+
+    <img src="./en_tutorials_create_a_path_and_follow_it [Godot Engine Wiki]_files/indexer.php" width="2" height="1" alt="">
+    <div id="screen__mode">      <span class="visible-xs"></span>
+      <span class="visible-sm"></span>
+      <span class="visible-md"></span>
+      <span class="visible-lg"></span>
+    </div>
+
+  </div>
+  <!--[if lte IE 8 ]></div><![endif]-->
+
+
+
+</body></html>
